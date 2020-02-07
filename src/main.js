@@ -20,6 +20,19 @@ const router = new VueRouter({
   routes:Router
 })
 
+//挂载路由导航守卫
+// router.beforeEach((to, from, next) => {
+//   if(to.path == '/admin'){
+//     return next();
+//   }else{
+//     const tokenStr = sessionStorage.getItem('token');
+//     if(!tokenStr){
+//       return next('/admin');
+//     }else{
+//       next();
+//     }
+//   }
+// })
 
 /* eslint-disable no-new */
 new Vue({

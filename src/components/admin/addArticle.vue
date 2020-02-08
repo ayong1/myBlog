@@ -27,11 +27,14 @@ export default {
   },
   methods: {
     add_success() {
-      this.$http.post("http://localhost/phpcrud/app.php?action=addArticle",this.article)
-      this.$message({
-        message: '博客发布成功',
-        type: 'success'
+      this.$http.post("http://localhost/phpcrud/app.php?action=addArticle",this.article).then((res)=>{
+        this.$message({
+          message: '博客发布成功',
+          type: 'success'
+        })
+        this.$router.push('/Welcome');
       })
+      
     }
   }
 }

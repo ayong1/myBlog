@@ -6,12 +6,16 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Router from './routes'
 import axios from 'axios'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import '@/assets/css/global.css'
 
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 // Vue.use(VueResource)
 Vue.prototype.$http=axios
+Vue.use(ElementUI)
 
 //路由配置
 const router = new VueRouter({

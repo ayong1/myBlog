@@ -15,14 +15,15 @@ import '@/assets/fonts/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 // Vue.use(VueResource)
-Vue.prototype.$http=axios
+// axios.defaults.baseURL = 'http://localhost/phpcrud/app.php?action=';
+Vue.prototype.$http = axios
 Vue.use(ElementUI)
 
 //路由配置
 const router = new VueRouter({
-  mode:'history',
-  base:__dirname,
-  routes:Router
+  mode: 'history',
+  base: __dirname,
+  routes: Router
 })
 
 //挂载路由导航守卫

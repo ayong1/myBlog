@@ -7,30 +7,35 @@
     </el-header>
     <!-- 页面主题区域 -->
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="!isCollapse ? '46px' : '200px'">
+        <div class="toggle-button" @click="toggleCollapse">
+          |||
+        </div>
         <!-- 侧边栏菜单区 -->
-        <el-menu background-color="#334744" text-color="#fff">
+        <el-menu background-color="#334744" text-color="#fff" unique-opened :collapse="!isCollapse" router>
           <el-submenu index="1">
             <template slot="title">
-              <i class="el-icon-location"></i>
+              <i class="iconfont icon-component"></i>
               <span>文章管理</span>
             </template>
-            <el-menu-item index="1-4-1">
+            <el-menu-item :index="'/'+'welcome'">
               <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>添加文章</span>
+                <i class="iconfont icon-documentation"></i>
+                <span>文章总览</span>
               </template>
             </el-menu-item>
-            <el-menu-item index="1-4-2">
+            <el-menu-item :index="'/'+'addArticle'">
               <template slot="title">
-                <i class="el-icon-location"></i>
+                <i class="iconfont icon-edit"></i>
                 <span>添加文章</span>
               </template>
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -38,7 +43,9 @@
 export default {
   name: '',
   data() {
-    return {}
+    return {
+      isCollapse:'true'
+    }
   },
   beforeCreate() {
     const token = sessionStorage.getItem('token')
@@ -52,6 +59,10 @@ export default {
     logout(){
       sessionStorage.clear();
       this.$router.push('/admin');
+    },
+    //菜单栏的折叠和展开
+    toggleCollapse(){
+      this.isCollapse = !this.isCollapse;
     }
   },
 }
@@ -77,5 +88,20 @@ export default {
 }
 .el-main {
   background: #eaedf1;
+}
+.iconfont{
+  margin-right: 10px;
+}
+.el-menu{
+  border: 0;
+}
+.toggle-button{
+  background: #4a5064;
+  font-size: 10px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  color: #fff;
 }
 </style>

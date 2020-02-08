@@ -9,6 +9,8 @@ import Skill from './components/author/Skill'
 import authorMessage from './components/author/authorMessage'
 import Admin from './components/Admin'
 import AdminControl from './components/admin/AdminControl'
+import Welcome from './components/admin/Welcome'
+import addArticle from './components/admin/addArticle'
 
 export default[
     {path:'/',component:Home},
@@ -27,5 +29,13 @@ export default[
         ]
     },
     {path:'/admin',component:Admin,},
-    {path:'/admincontrol',component:AdminControl,},
+    {
+        path:'/admincontrol',
+        component:AdminControl,
+        redirect:'/welcome',
+        children:[
+            {path:'/welcome',component:Welcome},
+            {path:'/addarticle',component:addArticle}
+        ]
+    },
 ]

@@ -11,6 +11,7 @@ import Admin from './components/Admin'
 import AdminControl from './components/admin/AdminControl'
 import Welcome from './components/admin/Welcome'
 import addArticle from './components/admin/addArticle'
+import Edit from './components/admin/Edit'
 
 export default[
     {path:'/',component:Home},
@@ -35,7 +36,8 @@ export default[
         redirect:'/welcome',
         children:[
             {path:'/welcome',component:Welcome},
-            {path:'/addarticle',component:addArticle}
+            {path:'/addarticle',component:addArticle},
+            {path:'/edit/:article_title',component:Edit},
         ]
     },
 ]

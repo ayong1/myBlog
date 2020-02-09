@@ -2,22 +2,84 @@
   <div>
     <div class="welcome_title">文章列表</div>
     <el-card>
-      <el-row :gutter="20">
-        <el-col :span="7">
-          <el-input placeholder="请输入内容">
-            <el-button slot="append" class="iconfont icon-search"></el-button>
-          </el-input>
-        </el-col>
-        <el-col :span="4">
-            <el-button type="primary">文章搜索</el-button>
+      <el-row>
+        <el-col :span="10">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="大勇哥专属搜索框"
+              aria-describedby="basic-addon2"
+              v-model="filterInput"
+            />
+            <span class="input-group-addon">
+              <i class="iconfont icon-search"></i>
+            </span>
+          </div>
         </el-col>
       </el-row>
+      <!-- 文章列表区域 -->
+      <el-table :data="filterBy(filterInput)" border>
+        <el-table-column type="index" label="序号"></el-table-column>
+        <el-table-column prop="article_date" label="日期"></el-table-column>
+        <el-table-column prop="article_title" label="标题"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-tooltip effect="dark" content="文章修改" placement="top-start" :enterable="false">
+              <el-button size="mini"><router-link :to="'/edit/'+scope.row.article_title">修改</router-link></el-button>
+            </el-tooltip>
+            <el-tooltip effect="dark" content="文章删除" placement="right" :enterable="false">
+              <el-button size="mini" type="danger" @click="handleDelete(scope.row.article_title)">删除</el-button>
+            </el-tooltip>
+          </template>
+        </el-table-column>
+      </el-table>
     </el-card>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      articleList: [],
+      filterInput: ''
+    }
+  },
+  inject:['reload'], //注入reload方法
+  methods: {
+    //删除文章
+    handleDelete(article_title) {
+      this.$http
+        .get(
+          'http://localhost/phpcrud/app.php?action=delete&article_title=' +
+            article_title
+        )
+        .then(res => {
+          this.$message({ message: '文章删除成功', type: 'success' })
+          this.reload() //直接调用
+        })
+    },
+    //文章匹配搜索
+    filterBy(search) {
+      return this.articleList.filter(data => {
+        return data.article_title.match(search)
+      })
+    }
+  },
+  created() {
+    this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
+      // console.log(res.data.articles);
+      this.articleList = res.data.articles
+    })
+  },
+  // updated() {
+  //   this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
+  //     // console.log(res.data.articles);
+  //     this.articleList = res.data.articles
+  //   })
+  // }
+}
 </script>
 
 <style lang="less" scoped>
@@ -28,5 +90,18 @@ export default {}
 }
 .el-card {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+.el-table {
+  margin-top: 15px;
+}
+.el-row {
+  display: flex;
+  justify-content: center;
+}
+input {
+  text-indent: 0.5em;
+}
+a:hover{
+  text-decoration: none;
 }
 </style>

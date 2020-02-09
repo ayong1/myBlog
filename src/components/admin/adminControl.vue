@@ -34,7 +34,7 @@
         </el-menu>
       </el-aside>
       <el-main>
-        <router-view></router-view>
+        <router-view v-if="isRouterAlive"></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -42,9 +42,15 @@
 <script>
 export default {
   name: '',
+  provide(){
+    return {
+      reload:this.reload
+    }
+  },
   data() {
     return {
-      isCollapse:'true'
+      isCollapse:'true',
+      isRouterAlive:true
     }
   },
   beforeCreate() {
@@ -63,6 +69,12 @@ export default {
     //菜单栏的折叠和展开
     toggleCollapse(){
       this.isCollapse = !this.isCollapse;
+    },
+    reload(){
+      this.isRouterAlive = false
+      this.$nextTick(function(){
+        this.isRouterAlive = true
+      })
     }
   },
 }

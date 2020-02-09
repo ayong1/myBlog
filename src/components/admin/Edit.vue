@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="addArticle-title">添加文章</span>
+    <span class="edit-title">添加文章</span>
     <el-card>
       <el-input
         type="text"
@@ -19,7 +19,7 @@
         :rows="15"
       ></el-input>
       <div style="margin: 20px 0;"></div>
-      <el-button type="info" :plain="true" @click="add_success">发布</el-button>
+      <el-button type="info" :plain="true" @click="edit_success">保存修改</el-button>
     </el-card>
   </div>
 </template>
@@ -32,18 +32,24 @@ export default {
     }
   },
   methods: {
-    add_success() {
+    edit_success() {
       this.$http
         .post(
           'http://localhost/phpcrud/app.php?action=addArticle',
           this.article
         )
         .then(res => {
-          this.$message({ message: '博客发布成功', type: 'success' })
-          this.$router.push('/Welcome')
+          this.$message({ message: '文章修改成功', type: 'success' })
+          this.$router.push('/welcome')
         })
     }
-  }
+  },
+  created() {
+      this.$http.get('http://localhost/phpcrud/app.php?action=edit&article_title='+this.$route.params.article_title).then(res=>{
+          this.article = res.data.article
+      })
+      
+  },
 }
 </script>
 

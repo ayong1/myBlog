@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     add_success() {
-<<<<<<< HEAD
       this.$http.post("http://localhost/phpcrud/app.php?action=addArticle",this.article).then((res)=>{
         this.$message({
           message: '博客发布成功',
@@ -41,8 +40,6 @@ export default {
         })
         this.$router.push('/Welcome');
       })
-      
-=======
       this.$http
         .post(
           'http://localhost/phpcrud/app.php?action=addArticle',
@@ -52,7 +49,6 @@ export default {
           this.$message({ message: '博客发布成功', type: 'success' })
           this.$router.push('/Welcome')
         })
->>>>>>> dev-adminControl
     }
   }
 }

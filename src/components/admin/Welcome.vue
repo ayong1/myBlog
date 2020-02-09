@@ -79,12 +79,6 @@ export default {
       this.articleList = res.data.articles
     })
   }
-  // updated() {
-  //   this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
-  //     // console.log(res.data.articles);
-  //     this.articleList = res.data.articles
-  //   })
-  // }
 }
 </script>
 

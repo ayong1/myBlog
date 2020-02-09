@@ -12,9 +12,11 @@ import AdminControl from './components/admin/AdminControl'
 import Welcome from './components/admin/Welcome'
 import addArticle from './components/admin/addArticle'
 import Edit from './components/admin/Edit'
+import SingleBlog from './components/SingleBlog'
 
 export default[
     {path:'/',component:Home},
+    {path:'/singleblog/:article_title',component:SingleBlog},
     {path:'/login',component:Login},
     {path:'/register',component:Register},
     {path:'/picture',component:Picture},

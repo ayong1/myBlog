@@ -6,7 +6,12 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Router from './routes'
 import axios from 'axios'
-import ElementUI from 'element-ui';
+import ElementUI from 'element-ui'
+//lightbox插件
+import LightBox from 'lightbox2'
+import 'lightbox2/dist/css/lightbox.min.css'
+import 'lightbox2/dist/js/lightbox'
+
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/css/global.css'
 import '@/assets/fonts/iconfont.css'
@@ -18,6 +23,7 @@ Vue.use(VueRouter)
 // axios.defaults.baseURL = 'http://localhost/phpcrud/app.php?action=';
 Vue.prototype.$http = axios
 Vue.use(ElementUI)
+Vue.use(LightBox)
 
 //路由配置
 const router = new VueRouter({

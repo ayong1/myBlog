@@ -29,7 +29,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <router-link to="/login">登陆/注册</router-link> 
+              <router-link v-if="username == '登录/注册'" to="/login">{{username}}</router-link>
+               <router-link v-else-if="username != '登录/注册'" to="">欢迎帅气的大佬 {{username}}</router-link>
             </li>
           </ul>
         </div>
@@ -46,7 +47,18 @@
 <script>
 export default {
   name: "App",
-  components: {}
+  data() {
+    return {
+      username:'登录/注册'
+    }
+  },
+  components: {},
+  updated() {
+    let username = window.sessionStorage.getItem('username');
+    // console.log(username);
+    
+    this.username = username;
+  },
 };
 </script>
 

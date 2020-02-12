@@ -4,3 +4,8 @@
 body,html,#app{
     height: 100%;
 }
+#waifu{
+    left: 74%!important;
+    display: flex;
+    justify-content: flex-end;
+}

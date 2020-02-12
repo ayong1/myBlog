@@ -13,6 +13,7 @@ import Welcome from './components/admin/Welcome'
 import addArticle from './components/admin/addArticle'
 import Edit from './components/admin/Edit'
 import SingleBlog from './components/SingleBlog'
+import messageEdit from './components/admin/messageEdit'
 
 export default[
     {path:'/',component:Home},
@@ -39,7 +40,8 @@ export default[
         children:[
             {path:'/welcome',component:Welcome},
             {path:'/addarticle',component:addArticle},
-            {path:'/edit/:article_title',component:Edit},
+            {path:'/edit',component:Edit},
+            {path:'/messageEdit',component:messageEdit},
         ]
     },
 ]

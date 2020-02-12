@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="welcome_title">文章列表</div>
+    <div>
+    <div class="welcome_title">留言列表</div>
     <el-card>
       <el-row>
         <el-col :span="10">
@@ -18,20 +18,15 @@
           </div>
         </el-col>
       </el-row>
-      <!-- 文章列表区域 -->
+      <!-- 留言列表区域 -->
       <el-table :data="filterBy(filterInput)" border>
         <el-table-column type="index" label="序号"></el-table-column>
-        <el-table-column prop="article_date" label="日期"></el-table-column>
-        <el-table-column prop="article_title" label="标题"></el-table-column>
+        <el-table-column prop="message_date" label="日期"></el-table-column>
+        <el-table-column prop="message_username" label="用户"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-tooltip effect="dark" content="文章修改" placement="top-start" :enterable="false">
-              <el-button size="mini">
-                <router-link :to="{path:'/edit',query:{article_title:scope.row.article_title}}">修改</router-link>
-              </el-button>
-            </el-tooltip>
-            <el-tooltip effect="dark" content="文章删除" placement="right" :enterable="false">
-              <el-button size="mini" type="danger" @click="handleDelete(scope.row.article_title)">删除</el-button>
+            <el-tooltip effect="dark" content="留言删除" placement="right" :enterable="false">
+              <el-button size="mini" type="danger" @click="handleDelete(scope.row.message_id)">删除</el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -44,35 +39,37 @@
 export default {
   data() {
     return {
-      articleList: [],
-      filterInput: ''
+      messageList: [],
+      filterInput:''
     }
   },
-  inject: ['reload'], //注入reload方法
+  inject:['reload'], //注入reload方法
   methods: {
-    //删除文章
-    handleDelete(article_title) {
+    //删除留言
+    handleDelete(message_id) {
+      console.log(message_id);
+      
       this.$http
         .get(
-          'http://localhost/phpcrud/app.php?action=delete&article_title=' +
-            article_title
+          'http://localhost/phpcrud/app.php?action=deleteMessage&message_id=' +
+            message_id
         )
         .then(res => {
-          this.$message({ message: '文章删除成功', type: 'success' })
+          this.$message({ message: '留言删除成功', type: 'success' })
           this.reload() //直接调用
         })
     },
-    //文章匹配搜索
+    //留言匹配搜索
     filterBy(search) {
-      return this.articleList.filter(data => {
-        return data.article_title.match(search)
+      return this.messageList.filter(data => {
+        return data.message_username.match(search)
       })
     }
   },
   created() {
-    this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
-      // console.log(res.data.articles);
-      this.articleList = res.data.articles
+    this.$http.get('http://localhost/phpcrud/app.php?action=readMessages').then(res => {
+      console.log(res.data.messages);
+      this.messageList = res.data.messages;
     })
   }
 }
@@ -97,7 +94,7 @@ export default {
 input {
   text-indent: 0.5em;
 }
-a:hover {
+a:hover{
   text-decoration: none;
 }
 </style>

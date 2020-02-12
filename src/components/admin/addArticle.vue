@@ -14,7 +14,6 @@
         type="textarea"
         placeholder="请输入内容"
         v-model="article.article_content"
-        maxlength="300"
         show-word-limit
         :rows="15"
       ></el-input>
@@ -40,15 +39,6 @@ export default {
         })
         this.$router.push('/Welcome');
       })
-      this.$http
-        .post(
-          'http://localhost/phpcrud/app.php?action=addArticle',
-          this.article
-        )
-        .then(res => {
-          this.$message({ message: '博客发布成功', type: 'success' })
-          this.$router.push('/Welcome')
-        })
     }
   }
 }

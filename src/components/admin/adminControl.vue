@@ -30,6 +30,12 @@
                 <span>添加文章</span>
               </template>
             </el-menu-item>
+            <el-menu-item :index="'/'+'messageEdit'">
+              <template slot="title">
+                <i class="iconfont icon-edit"></i>
+                <span>留言管理</span>
+              </template>
+            </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

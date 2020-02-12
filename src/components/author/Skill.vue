@@ -22,7 +22,7 @@
       >
         <div
           class="panel-body"
-        >本站前台是基于vue开发，用到了Bootstrap，主要原因是Bootstrap简洁、直观、强悍，让我的开发更迅速、简单。后台是基于php开发,服务用的是apache,服务器是阿里云的轻量应用服务器。
+        >本站前台是基于vue开发，用到了Bootstrap，主要原因是Bootstrap简洁、直观、强悍，让我的开发更迅速、简单。后台是基于php开发,服务用的是apache,服务器是阿里云的轻量应用服务器。本站源码我已经上传到<a href="https://github.com/ayong1/myBlog">我的GitHub</a> 
         <span class="glyphicon glyphicon-user">如有问题可以咨询QQ：1296545486</span></div>
       </div>
     </div>

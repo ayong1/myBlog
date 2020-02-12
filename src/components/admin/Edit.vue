@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="edit-title">添加文章</span>
+    <span class="edit-title">编辑文章</span>
     <el-card>
       <el-input
         type="text"
@@ -14,7 +14,6 @@
         type="textarea"
         placeholder="请输入内容"
         v-model="article.article_content"
-        maxlength="300"
         show-word-limit
         :rows="15"
       ></el-input>
@@ -33,20 +32,25 @@ export default {
   },
   methods: {
     edit_success() {
+      
       this.$http
         .post(
-          'http://localhost/phpcrud/app.php?action=addArticle',
+          'http://localhost/phpcrud/app.php?action=editArticle',
           this.article
         )
         .then(res => {
-          this.$message({ message: '文章修改成功', type: 'success' })
+          // console.log(res);
+          
+          this.$message({ message: '文章修改成功', type: 'success' }
+          )
           this.$router.push('/welcome')
         })
     }
   },
   created() {
-      this.$http.get('http://localhost/phpcrud/app.php?action=edit&article_title='+this.$route.params.article_title).then(res=>{
+      this.$http.get('http://localhost/phpcrud/app.php?action=edit&article_title='+this.$route.query.article_title).then(res=>{
           this.article = res.data.article
+          console.log(this.article);
       })
       
   },

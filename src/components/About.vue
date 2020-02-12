@@ -19,7 +19,9 @@
     <div class="col-md-8">
       <router-view></router-view>
     </div>
-    <div class="col-md-2 right">13213465</div>
+    <div class="col-md-2 right">
+      
+    </div>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="less" scoped>
 .container {
   margin-top: 20px;
 }

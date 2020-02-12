@@ -11,11 +11,11 @@
           <object type="application/x-shockwave-flash" style="outline:none;" data="http://cdn.abowman.com/widgets/penguins/penguins.swf?" width="300" height="200"><param name="movie" value="http://cdn.abowman.com/widgets/penguins/penguins.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param><param name="scale" value="noscale"/><param name="salign" value="tl"/></object>
         </div>
         <div class="box">
-          <h3>来 , 说说你在做什么 , 想什么</h3>
-          <textarea class="form-control" rows="3"></textarea>
+          <h3>稍微说点什么吧，给个面子</h3>
+          <textarea class="form-control" rows="3" v-model.trim="content" @input="descInput"></textarea>
           <div class="message-btn">
-            <span>还能输入140个字</span>
-            <button class="btn btn-success">发布</button>
+            <span>还能输入<span class="wordStyle">{{wordCount}} </span>个字</span>
+            <button class="btn btn-success" @click="submitMessage">发布</button>
           </div>
           <hr />
           <div class="message-list">
@@ -23,45 +23,17 @@
               <span>留言榜</span>
             </h3>
             <ul>
-              <li>
+              <li v-for="(item, index) in messageList" :key="index">
                 <div class="userPic">
-                  <img src="../assets/joke.jpg" alt />
+                  <img src="../assets/messageImg.jpg" alt />
                 </div>
                 <div class="userContent">
                   <div class="userName">
-                    <a href="#">大勇哥:</a>
+                    <a href="#">{{item.message_username}}:</a>
                   </div>
-                  <div class="msgInfo">新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能</div>
+                  <div class="msgInfo">{{item.message_content}}</div>
                   <div class="times">
-                    <span>07月05日</span>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="userPic">
-                  <img src="../assets/joke.jpg" alt />
-                </div>
-                <div class="userContent">
-                  <div class="userName">
-                    <a href="#">大勇哥:</a>
-                  </div>
-                  <div class="msgInfo">新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能</div>
-                  <div class="times">
-                    <span>07月05日</span>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="userPic">
-                  <img src="../assets/joke.jpg" alt />
-                </div>
-                <div class="userContent">
-                  <div class="userName">
-                    <a href="#">大勇哥:</a>
-                  </div>
-                  <div class="msgInfo">新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能新增删除广播功能</div>
-                  <div class="times">
-                    <span>07月05日</span>
+                    <span>{{item.message_date}}</span>
                   </div>
                 </div>
               </li>
@@ -77,10 +49,15 @@
 export default {
   name: 'message',
   data() {
-    return {}
+    return {
+        content:'',
+        wordCount:'140',
+        isSubmit:true,
+        messageList:[]
+    }
   },
   created() {
-    const token = sessionStorage.getItem('token')
+    const token = window.sessionStorage.getItem('token')
     if (!token) {
       this.$message({
         message: '请先登录你的账号',
@@ -91,15 +68,57 @@ export default {
         path: '/login'
       })
     }
+    this.$http.get('http://localhost/phpcrud/app.php?action=readMessages').then(res => {
+      // console.log(res.data.messages);
+      this.messageList = res.data.messages;
+    })
   },
+  inject:['reload'],
   methods: {
-    
-  },
+    descInput(){
+      let txtVal = this.content.length;
+      this.wordCount = 140 - txtVal;
+      if(this.wordCount >= 0 && this.wordCount != 140){
+        this.isSubmit = true;
+        // console.log('123');
+      }else{
+        this.isSubmit = false;
+        // console.log('456');
+      }
+    },
+    submitMessage(){
+      if(this.isSubmit){
+        let userMessage = {};
+        userMessage.username = window.sessionStorage.getItem('username');
+        userMessage.content = this.content;
+        // console.log(userMessage);
+        this.$http.post('http://localhost/phpcrud/app.php?action=addMessage',userMessage).then(res=>{
+          this.$message({
+            message:'留言发布成功',
+            type:'success',
+            offset:60
+          })
+          this.reload();
+        })
+      }else{
+        this.$message({
+          message:'字数超过了最大限制，请删除一些呦！',
+          type:'error',
+          offset:60
+        })
+      }
+    }
+  }
 }
 </script>
 
 
 <style scoped>
+.wordStyle{
+  font-size: 30px;
+  font-family: sans-serif;
+  font-style:italic;
+}
 h1 {
   margin-top: 30px;
   margin-bottom: 20px;

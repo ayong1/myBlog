@@ -61,7 +61,7 @@ export default {
   },
   beforeCreate() {
     const token = sessionStorage.getItem('token')
-    if (!token) {
+    if (token != '2b7780ad2177f8e6140f3c208f2966c6') {
       this.$router.push({
         path: '/admin'
       })

@@ -46,7 +46,7 @@ export default {
   methods: {
     getUser() {
       this.$http
-        .post('http://localhost/phpcrud/app.php?action=userRegister', {
+        .post('http://47.95.228.1/phpcrud/app.php?action=userRegister', {
           header: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=uft-8'
           },
@@ -74,7 +74,7 @@ export default {
     checkUser() {
       console.log(this.user.username)
       this.$http
-        .post('http://localhost/phpcrud/app.php?action=userCheck', {
+        .post('http://47.95.228.1/phpcrud/app.php?action=userCheck', {
           header: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=uft-8'
           },

@@ -8,7 +8,7 @@
             生活不是总是想着去超越谁，而是去超越自己。每个成功者，都要穿越不为人知的黑暗。强者不是没眼泪，只是能含着眼泪向前奔跑。
         </div>
         <div class="authorMessage">
-            <img src="../../assets/authorMessage.jpg" alt="">
+            <img src="/static/authorMessage.jpg" alt="">
         </div>
     </div>
 </template>

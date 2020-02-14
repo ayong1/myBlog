@@ -109,7 +109,7 @@ export default {
   },
   created() {
     this.getJoke()
-    this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
+    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=read').then(res => {
       // console.log(res.data.articles);
       this.articleList = res.data.articles
     })

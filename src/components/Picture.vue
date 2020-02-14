@@ -2,34 +2,34 @@
   <div class="content">
     <h1>大勇哥照片墙</h1>
     <div class="gallery">
-      <a href="http://localhost/Picturewall/1.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/1.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/1.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/2.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/2.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/2.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/3.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/3.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/3.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/4.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/4.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/4.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/5.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/5.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/5.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/6.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/6.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/6.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/7.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/7.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/7.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/8.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/8.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/8.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/9.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/9.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/9.jpg" />
       </a>
-      <a href="http://localhost/Picturewall/10.jpg" data-lightbox="gallery" data-title="">
+      <a href="http://47.95.228.1/Picturewall/10.jpg" data-lightbox="gallery" data-title="">
         <img src="../assets/PictureWall/10.jpg" />
       </a>
     </div>

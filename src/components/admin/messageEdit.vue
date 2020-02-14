@@ -23,6 +23,7 @@
         <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column prop="message_date" label="日期"></el-table-column>
         <el-table-column prop="message_username" label="用户"></el-table-column>
+        <el-table-column prop="message_content" label="留言内容"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="留言删除" placement="right" :enterable="false">
@@ -51,7 +52,7 @@ export default {
       
       this.$http
         .get(
-          'http://localhost/phpcrud/app.php?action=deleteMessage&message_id=' +
+          'http://47.95.228.1/phpcrud/app.php?action=deleteMessage&message_id=' +
             message_id
         )
         .then(res => {
@@ -67,7 +68,7 @@ export default {
     }
   },
   created() {
-    this.$http.get('http://localhost/phpcrud/app.php?action=readMessages').then(res => {
+    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=readMessages').then(res => {
       console.log(res.data.messages);
       this.messageList = res.data.messages;
     })

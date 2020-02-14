@@ -41,7 +41,7 @@ export default {
   methods: {
     checkAdmin() {
       this.$http
-        .post('http://localhost/phpcrud/app.php?action=adminLogin', {
+        .post('http://47.95.228.1/phpcrud/app.php?action=adminLogin', {
           header: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=uft-8'
           },
@@ -51,7 +51,7 @@ export default {
         .then(data => {
           //   console.log(data.data.token);
           if (data.data.message == '查到了') {
-            let token = data.data.token
+            let token = '2b7780ad2177f8e6140f3c208f2966c6';
             sessionStorage.setItem('token', token)
             alert('登录成功')
             this.$router.push({

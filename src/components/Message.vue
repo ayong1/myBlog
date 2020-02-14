@@ -68,7 +68,7 @@ export default {
         path: '/login'
       })
     }
-    this.$http.get('http://localhost/phpcrud/app.php?action=readMessages').then(res => {
+    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=readMessages').then(res => {
       // console.log(res.data.messages);
       this.messageList = res.data.messages;
     })
@@ -92,7 +92,7 @@ export default {
         userMessage.username = window.sessionStorage.getItem('username');
         userMessage.content = this.content;
         // console.log(userMessage);
-        this.$http.post('http://localhost/phpcrud/app.php?action=addMessage',userMessage).then(res=>{
+        this.$http.post('http://47.95.228.1/phpcrud/app.php?action=addMessage',userMessage).then(res=>{
           this.$message({
             message:'留言发布成功',
             type:'success',

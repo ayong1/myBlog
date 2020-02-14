@@ -27,7 +27,7 @@
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="文章修改" placement="top-start" :enterable="false">
               <el-button size="mini">
-                <router-link :to="{path:'/edit',query:{article_title:scope.row.article_title}}">修改</router-link>
+                <router-link :to="{path:'/edit',query:{article_id:scope.row.article_id}}">修改</router-link>
               </el-button>
             </el-tooltip>
             <el-tooltip effect="dark" content="文章删除" placement="right" :enterable="false">
@@ -54,7 +54,7 @@ export default {
     handleDelete(article_title) {
       this.$http
         .get(
-          'http://localhost/phpcrud/app.php?action=delete&article_title=' +
+          'http://47.95.228.1/phpcrud/app.php?action=delete&article_title=' +
             article_title
         )
         .then(res => {
@@ -70,7 +70,7 @@ export default {
     }
   },
   created() {
-    this.$http.get('http://localhost/phpcrud/app.php?action=read').then(res => {
+    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=read').then(res => {
       // console.log(res.data.articles);
       this.articleList = res.data.articles
     })

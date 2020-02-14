@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     add_success() {
-      this.$http.post("http://localhost/phpcrud/app.php?action=addArticle",this.article).then((res)=>{
+      this.$http.post("http://47.95.228.1/phpcrud/app.php?action=addArticle",this.article).then((res)=>{
         this.$message({
           message: '博客发布成功',
           type: 'success'

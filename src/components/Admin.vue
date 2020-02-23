@@ -41,7 +41,7 @@ export default {
   methods: {
     checkAdmin() {
       this.$http
-        .post('http://47.95.228.1/phpcrud/app.php?action=adminLogin', {
+        .post('http://dayongge.xyz/phpcrud/app.php?action=adminLogin', {
           header: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=uft-8'
           },

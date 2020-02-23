@@ -38,7 +38,7 @@ export default {
     this.getJoke()
     this.$http
       .get(
-        'http://47.95.228.1/phpcrud/app.php?action=selArticle&article_title=' +
+        'http://dayongge.xyz/phpcrud/app.php?action=selArticle&article_title=' +
           this.$route.params.article_title
       )
       .then(res => {

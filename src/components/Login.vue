@@ -51,7 +51,7 @@ export default {
     userLogin() {
       // console.log(this.user.username+' '+this.user.password);
       this.$http
-        .post('http://47.95.228.1/phpcrud/app.php?action=userLogin', {
+        .post('http://dayongge.xyz/phpcrud/app.php?action=userLogin', {
           header: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=uft-8'
           },

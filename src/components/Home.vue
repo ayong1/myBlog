@@ -6,6 +6,11 @@
       data-ride="carousel"
       data-interval="4000"
     >
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -77,19 +82,22 @@
             <div class="postCon">
               <div class="c_b_p_desc">
                 {{item.article_content.slice(0,30)}}
-                <router-link :to="'/singleblog/'+item.article_title" class="c_b_p_desc_readmore">阅读原文</router-link> 
+                <router-link
+                  :to="'/singleblog/'+item.article_title"
+                  class="c_b_p_desc_readmore"
+                >阅读原文</router-link>
               </div>
             </div>
-            <div class="postDesc">
-              ayong    阅读 (2) 评论 (0)
-            </div>
+            <div class="postDesc">ayong 阅读 (2) 评论 (0)</div>
           </div>
         </div>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 <script>
+import Footer from './Footer'
 export default {
   // name:'home',
   data() {
@@ -97,6 +105,10 @@ export default {
       joke: '',
       articleList: []
     }
+  },
+
+  components: {
+    Footer
   },
   methods: {
     getJoke() {
@@ -109,10 +121,12 @@ export default {
   },
   created() {
     this.getJoke()
-    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=read').then(res => {
-      // console.log(res.data.articles);
-      this.articleList = res.data.articles
-    })
+    this.$http
+      .get('http://dayongge.xyz/phpcrud/app.php?action=read')
+      .then(res => {
+        // console.log(res.data.articles);
+        this.articleList = res.data.articles
+      })
   },
   mounted() {
     $('#datetimepicker13').datetimepicker({

@@ -52,7 +52,7 @@ export default {
       
       this.$http
         .get(
-          'http://47.95.228.1/phpcrud/app.php?action=deleteMessage&message_id=' +
+          'http://dayongge.xyz/phpcrud/app.php?action=deleteMessage&message_id=' +
             message_id
         )
         .then(res => {
@@ -68,7 +68,7 @@ export default {
     }
   },
   created() {
-    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=readMessages').then(res => {
+    this.$http.get('http://dayongge.xyz/phpcrud/app.php?action=readMessages').then(res => {
       console.log(res.data.messages);
       this.messageList = res.data.messages;
     })

@@ -34,7 +34,7 @@ export default {
     edit_success() {
       this.$http
         .post(
-          'http://47.95.228.1/phpcrud/app.php?action=editArticle',
+          'http://dayongge.xyz/phpcrud/app.php?action=editArticle',
           this.article
         )
         .then(res => {
@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-      this.$http.get('http://47.95.228.1/phpcrud/app.php?action=edit&article_id='+this.$route.query.article_id).then(res=>{
+      this.$http.get('http://dayongge.xyz/phpcrud/app.php?action=edit&article_id='+this.$route.query.article_id).then(res=>{
           this.article = res.data.article
           // console.log(this.article);
       })

@@ -54,7 +54,7 @@ export default {
     handleDelete(article_title) {
       this.$http
         .get(
-          'http://47.95.228.1/phpcrud/app.php?action=delete&article_title=' +
+          'http://dayongge.xyz/phpcrud/app.php?action=delete&article_title=' +
             article_title
         )
         .then(res => {
@@ -70,7 +70,7 @@ export default {
     }
   },
   created() {
-    this.$http.get('http://47.95.228.1/phpcrud/app.php?action=read').then(res => {
+    this.$http.get('http://dayongge.xyz/phpcrud/app.php?action=read').then(res => {
       // console.log(res.data.articles);
       this.articleList = res.data.articles
     })

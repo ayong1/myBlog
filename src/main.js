@@ -19,8 +19,6 @@ import '@/assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-// Vue.use(VueResource)
-// axios.defaults.baseURL = 'http://localhost/phpcrud/app.php?action=';
 Vue.prototype.$http = axios
 Vue.use(ElementUI)
 Vue.use(LightBox)

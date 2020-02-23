@@ -1,21 +1,15 @@
-# holiday-project
 
-> my-blog
+
+> 个人博客
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+#
+# 本项目前台主要是vue脚手架搭建，后台用的是php。前后端分离。
+# 本网站已经上传到阿里云服务器，网址: http://www.dayongge.xyz
+#
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed description of how it works, please contact me.
+QQ：1296545486
